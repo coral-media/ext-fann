@@ -5,6 +5,7 @@
 MIT License
 
 Copyright (c) 2026 Coral Media
+
 Copyright (c) 2026 Rafael Ernesto Espinosa Santiesteban <rernesto.espinosa@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
