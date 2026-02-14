@@ -1,0 +1,11 @@
+ARG_WITH("fann", "FANN support", "yes");
+
+if (PHP_FANN != 'no') {
+  var fannBase = "lib\\libfann";
+
+  ADD_FLAG("CFLAGS_FANN", "/DHAVE_FANN");
+  ADD_FLAG("CFLAGS_FANN", "/I" + fannBase + "\\src");
+  ADD_FLAG("CFLAGS_FANN", "/I" + fannBase + "\\src\\include");
+
+  EXTENSION("fann", "fann.c lib\\libfann\\src\\floatfann.c", null, CFLAGS_FANN);
+}

@@ -1,0 +1,25 @@
+{
+  "name": "coral-media/ext-fann",
+  "description": "FANN (Fast Artificial Neural Network) bindings for PHP",
+  "type": "php-ext",
+  "license": "MIT",
+  "require": {
+    "php": ">=8.1"
+  },
+  "keywords": [
+    "php-ext",
+    "fann",
+    "neural-network",
+    "machine-learning"
+  ],
+  "php-ext": {
+    "extension-name": "fann",
+    "configure-options": [
+      {
+        "name": "with-fann",
+        "description": "Build with vendored FANN sources",
+        "needs-value": false
+      }
+    ]
+  }
+}
