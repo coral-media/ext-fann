@@ -3,6 +3,7 @@ ARG_WITH("fann", "FANN support", "yes");
 if (PHP_FANN != 'no') {
   var CFLAGS_FANN = "";
   CFLAGS_FANN = CFLAGS_FANN + " /DHAVE_FANN";
+  CFLAGS_FANN = CFLAGS_FANN + " /DFANN_NO_DLL";
   CFLAGS_FANN = CFLAGS_FANN + " /Ilib\\libfann\\src";
   CFLAGS_FANN = CFLAGS_FANN + " /Ilib\\libfann\\src\\include";
 
