@@ -12,6 +12,12 @@
     "neural-network",
     "machine-learning"
   ],
+  "authors": [
+    {
+      "name": "Rafael Ernesto Espinosa Santiesteban",
+      "email": "rernesto.espinosa@gmail.com"
+    }
+  ],
   "php-ext": {
     "extension-name": "fann",
     "configure-options": [
