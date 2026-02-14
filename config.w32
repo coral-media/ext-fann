@@ -1,11 +1,25 @@
 ARG_WITH("fann", "FANN support", "yes");
 
 if (PHP_FANN != 'no') {
-  var fannBase = "lib\\libfann";
+  var CFLAGS_FANN = "";
+  CFLAGS_FANN = CFLAGS_FANN + " /DHAVE_FANN";
+  CFLAGS_FANN = CFLAGS_FANN + " /Ilib\\libfann\\src";
+  CFLAGS_FANN = CFLAGS_FANN + " /Ilib\\libfann\\src\\include";
 
-  ADD_FLAG("CFLAGS_FANN", "/DHAVE_FANN");
-  ADD_FLAG("CFLAGS_FANN", "/I" + fannBase + "\\src");
-  ADD_FLAG("CFLAGS_FANN", "/I" + fannBase + "\\src\\include");
+  /*
+   * Keep source files explicit (no wildcards) to avoid nmake path/source
+   * resolution issues in CI Windows builds.
+   *
+   * Do not compile floatfann.c directly here because it #includes the other
+   * .c files; we compile those implementation units explicitly.
+   */
+  var fann_sources = "fann.c";
+  fann_sources = fann_sources + " " + "lib\\libfann\\src\\fann.c";
+  fann_sources = fann_sources + " " + "lib\\libfann\\src\\fann_io.c";
+  fann_sources = fann_sources + " " + "lib\\libfann\\src\\fann_train.c";
+  fann_sources = fann_sources + " " + "lib\\libfann\\src\\fann_train_data.c";
+  fann_sources = fann_sources + " " + "lib\\libfann\\src\\fann_error.c";
+  fann_sources = fann_sources + " " + "lib\\libfann\\src\\fann_cascade.c";
 
-  EXTENSION("fann", "fann.c lib\\libfann\\src\\floatfann.c", null, CFLAGS_FANN);
+  EXTENSION("fann", fann_sources, null, CFLAGS_FANN);
 }
