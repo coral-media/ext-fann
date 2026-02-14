@@ -92,6 +92,8 @@ function fann_destroy(mixed $ann): bool {}
  * @param string $configuration_file Destination file path.
  */
 function fann_save(mixed $ann, string $configuration_file): bool {}
+/** @param resource $ann */
+function fann_save_to_fixed(mixed $ann, string $configuration_file): int {}
 
 /**
  * Runs inference for one input vector.
@@ -134,6 +136,8 @@ function fann_read_train_from_file(string $filename): mixed {}
  * @param string $filename Destination file path.
  */
 function fann_save_train(mixed $train_data, string $filename): bool {}
+/** @param resource $train_data */
+function fann_save_train_to_fixed(mixed $train_data, string $filename, int $decimal_point): int {}
 
 /**
  * Destroys a training-data resource.
@@ -262,6 +266,11 @@ function fann_set_activation_function_hidden(mixed $ann, int $activation_functio
  */
 function fann_set_activation_function_output(mixed $ann, int $activation_function): bool {}
 
+/** @param resource $ann */
+function fann_set_activation_function(mixed $ann, int $activation_function, int $layer, int $neuron): bool {}
+/** @param resource $ann */
+function fann_set_activation_function_layer(mixed $ann, int $activation_function, int $layer): bool {}
+
 /**
  * Returns activation function for a specific neuron.
  *
@@ -270,6 +279,276 @@ function fann_set_activation_function_output(mixed $ann, int $activation_functio
  * @param int $neuron Neuron index in layer.
  */
 function fann_get_activation_function(mixed $ann, int $layer, int $neuron): int {}
+/** @param resource $ann */
+function fann_get_activation_steepness(mixed $ann, int $layer, int $neuron): float {}
+/** @param resource $ann */
+function fann_set_activation_steepness(mixed $ann, float $steepness, int $layer, int $neuron): bool {}
+/** @param resource $ann */
+function fann_set_activation_steepness_layer(mixed $ann, float $steepness, int $layer): bool {}
+/** @param resource $ann */
+function fann_set_activation_steepness_hidden(mixed $ann, float $steepness): bool {}
+/** @param resource $ann */
+function fann_set_activation_steepness_output(mixed $ann, float $steepness): bool {}
+
+/** @param resource $ann */
+function fann_get_num_input(mixed $ann): int {}
+
+/** @param resource $ann */
+function fann_get_num_output(mixed $ann): int {}
+
+/** @param resource $ann */
+function fann_get_total_neurons(mixed $ann): int {}
+
+/** @param resource $ann */
+function fann_get_total_connections(mixed $ann): int {}
+
+/** @param resource $ann */
+function fann_get_network_type(mixed $ann): int {}
+
+/** @param resource $ann */
+function fann_get_connection_rate(mixed $ann): float {}
+
+/** @param resource $ann */
+function fann_get_num_layers(mixed $ann): int {}
+
+/** @param resource $ann @return array */
+function fann_get_layer_array(mixed $ann): array {}
+
+/** @param resource $ann @return array */
+function fann_get_bias_array(mixed $ann): array {}
+
+/**
+ * @param resource $ann
+ * @return array
+ */
+function fann_get_connection_array(mixed $ann): array {}
+
+/**
+ * @param resource $ann
+ * @param array $connections
+ */
+function fann_set_weight_array(mixed $ann, array $connections): bool {}
+
+/** @param resource $ann */
+function fann_set_weight(mixed $ann, int $from_neuron, int $to_neuron, float $weight): bool {}
+
+/** @param resource $ann */
+function fann_randomize_weights(mixed $ann, float $min_weight, float $max_weight): bool {}
+
+/** @param resource $ann @param resource $train_data */
+function fann_init_weights(mixed $ann, mixed $train_data): bool {}
+
+/** @param resource $ann */
+function fann_print_connections(mixed $ann): void {}
+
+/** @param resource $ann */
+function fann_get_learning_momentum(mixed $ann): float {}
+/** @param resource $ann */
+function fann_set_learning_momentum(mixed $ann, float $learning_momentum): bool {}
+
+/** @param resource $ann */
+function fann_get_train_error_function(mixed $ann): int {}
+/** @param resource $ann */
+function fann_set_train_error_function(mixed $ann, int $train_error_function): bool {}
+
+/** @param resource $ann */
+function fann_get_train_stop_function(mixed $ann): int {}
+/** @param resource $ann */
+function fann_set_train_stop_function(mixed $ann, int $train_stop_function): bool {}
+
+/** @param resource $ann */
+function fann_get_bit_fail_limit(mixed $ann): float {}
+/** @param resource $ann */
+function fann_set_bit_fail_limit(mixed $ann, float $bit_fail_limit): bool {}
+
+/** @param resource $ann */
+function fann_get_quickprop_decay(mixed $ann): float {}
+/** @param resource $ann */
+function fann_set_quickprop_decay(mixed $ann, float $quickprop_decay): bool {}
+
+/** @param resource $ann */
+function fann_get_quickprop_mu(mixed $ann): float {}
+/** @param resource $ann */
+function fann_set_quickprop_mu(mixed $ann, float $quickprop_mu): bool {}
+
+/** @param resource $ann */
+function fann_get_rprop_increase_factor(mixed $ann): float {}
+/** @param resource $ann */
+function fann_set_rprop_increase_factor(mixed $ann, float $rprop_increase_factor): bool {}
+
+/** @param resource $ann */
+function fann_get_rprop_decrease_factor(mixed $ann): float {}
+/** @param resource $ann */
+function fann_set_rprop_decrease_factor(mixed $ann, float $rprop_decrease_factor): bool {}
+
+/** @param resource $ann */
+function fann_get_rprop_delta_min(mixed $ann): float {}
+/** @param resource $ann */
+function fann_set_rprop_delta_min(mixed $ann, float $rprop_delta_min): bool {}
+
+/** @param resource $ann */
+function fann_get_rprop_delta_max(mixed $ann): float {}
+/** @param resource $ann */
+function fann_set_rprop_delta_max(mixed $ann, float $rprop_delta_max): bool {}
+
+/** @param resource $ann */
+function fann_get_rprop_delta_zero(mixed $ann): float {}
+/** @param resource $ann */
+function fann_set_rprop_delta_zero(mixed $ann, float $rprop_delta_zero): bool {}
+
+/** @param resource $ann */
+function fann_get_sarprop_weight_decay_shift(mixed $ann): float {}
+/** @param resource $ann */
+function fann_set_sarprop_weight_decay_shift(mixed $ann, float $sarprop_weight_decay_shift): bool {}
+
+/** @param resource $ann */
+function fann_get_sarprop_step_error_threshold_factor(mixed $ann): float {}
+/** @param resource $ann */
+function fann_set_sarprop_step_error_threshold_factor(mixed $ann, float $sarprop_step_error_threshold_factor): bool {}
+
+/** @param resource $ann */
+function fann_get_sarprop_step_error_shift(mixed $ann): float {}
+/** @param resource $ann */
+function fann_set_sarprop_step_error_shift(mixed $ann, float $sarprop_step_error_shift): bool {}
+
+/** @param resource $ann */
+function fann_get_sarprop_temperature(mixed $ann): float {}
+/** @param resource $ann */
+function fann_set_sarprop_temperature(mixed $ann, float $sarprop_temperature): bool {}
+
+/** @param resource $train_data */
+function fann_shuffle_train_data(mixed $train_data): bool {}
+/** @param resource $train_data */
+function fann_scale_input_train_data(mixed $train_data, float $new_min, float $new_max): bool {}
+/** @param resource $train_data */
+function fann_scale_output_train_data(mixed $train_data, float $new_min, float $new_max): bool {}
+/** @param resource $train_data */
+function fann_scale_train_data(mixed $train_data, float $new_min, float $new_max): bool {}
+
+/** @param resource $data1 @param resource $data2 @return resource|false */
+function fann_merge_train_data(mixed $data1, mixed $data2): mixed {}
+/** @param resource $train_data @return resource|false */
+function fann_duplicate_train_data(mixed $train_data): mixed {}
+/** @param resource $train_data @return resource|false */
+function fann_subset_train_data(mixed $train_data, int $pos, int $length): mixed {}
+
+/** @param resource $train_data */
+function fann_length_train_data(mixed $train_data): int {}
+/** @param resource $train_data */
+function fann_num_input_train_data(mixed $train_data): int {}
+/** @param resource $train_data */
+function fann_num_output_train_data(mixed $train_data): int {}
+
+/** @param resource $ann @param resource $train_data */
+function fann_train_epoch(mixed $ann, mixed $train_data): float {}
+/** @param resource $ann @param resource $train_data */
+function fann_test_data(mixed $ann, mixed $train_data): float {}
+
+/** @param resource $ann @param resource $train_data */
+function fann_scale_train(mixed $ann, mixed $train_data): bool {}
+/** @param resource $ann @param resource $train_data */
+function fann_descale_train(mixed $ann, mixed $train_data): bool {}
+
+/** @param resource $ann @param resource $train_data */
+function fann_set_input_scaling_params(mixed $ann, mixed $train_data, float $new_input_min, float $new_input_max): bool {}
+/** @param resource $ann @param resource $train_data */
+function fann_set_output_scaling_params(mixed $ann, mixed $train_data, float $new_output_min, float $new_output_max): bool {}
+/** @param resource $ann @param resource $train_data */
+function fann_set_scaling_params(mixed $ann, mixed $train_data, float $new_input_min, float $new_input_max, float $new_output_min, float $new_output_max): bool {}
+/** @param resource $ann */
+function fann_clear_scaling_params(mixed $ann): bool {}
+
+/** @param resource $ann @return array */
+function fann_scale_input(mixed $ann, array $input_vector): array {}
+/** @param resource $ann @return array */
+function fann_scale_output(mixed $ann, array $output_vector): array {}
+/** @param resource $ann @return array */
+function fann_descale_input(mixed $ann, array $input_vector): array {}
+/** @param resource $ann @return array */
+function fann_descale_output(mixed $ann, array $output_vector): array {}
+
+/** @param resource $ann @param resource $train_data */
+function fann_cascadetrain_on_data(mixed $ann, mixed $train_data, int $max_neurons, int $neurons_between_reports, float $desired_error): bool {}
+/** @param resource $ann */
+function fann_cascadetrain_on_file(mixed $ann, string $filename, int $max_neurons, int $neurons_between_reports, float $desired_error): bool {}
+
+/** @param resource $ann */
+function fann_get_cascade_output_change_fraction(mixed $ann): float {}
+/** @param resource $ann */
+function fann_set_cascade_output_change_fraction(mixed $ann, float $cascade_output_change_fraction): bool {}
+/** @param resource $ann */
+function fann_get_cascade_output_stagnation_epochs(mixed $ann): int {}
+/** @param resource $ann */
+function fann_set_cascade_output_stagnation_epochs(mixed $ann, int $cascade_output_stagnation_epochs): bool {}
+
+/** @param resource $ann */
+function fann_get_cascade_candidate_change_fraction(mixed $ann): float {}
+/** @param resource $ann */
+function fann_set_cascade_candidate_change_fraction(mixed $ann, float $cascade_candidate_change_fraction): bool {}
+/** @param resource $ann */
+function fann_get_cascade_candidate_stagnation_epochs(mixed $ann): int {}
+/** @param resource $ann */
+function fann_set_cascade_candidate_stagnation_epochs(mixed $ann, int $cascade_candidate_stagnation_epochs): bool {}
+
+/** @param resource $ann */
+function fann_get_cascade_weight_multiplier(mixed $ann): float {}
+/** @param resource $ann */
+function fann_set_cascade_weight_multiplier(mixed $ann, float $cascade_weight_multiplier): bool {}
+/** @param resource $ann */
+function fann_get_cascade_candidate_limit(mixed $ann): float {}
+/** @param resource $ann */
+function fann_set_cascade_candidate_limit(mixed $ann, float $cascade_candidate_limit): bool {}
+
+/** @param resource $ann */
+function fann_get_cascade_max_out_epochs(mixed $ann): int {}
+/** @param resource $ann */
+function fann_set_cascade_max_out_epochs(mixed $ann, int $cascade_max_out_epochs): bool {}
+/** @param resource $ann */
+function fann_get_cascade_min_out_epochs(mixed $ann): int {}
+/** @param resource $ann */
+function fann_set_cascade_min_out_epochs(mixed $ann, int $cascade_min_out_epochs): bool {}
+/** @param resource $ann */
+function fann_get_cascade_max_cand_epochs(mixed $ann): int {}
+/** @param resource $ann */
+function fann_set_cascade_max_cand_epochs(mixed $ann, int $cascade_max_cand_epochs): bool {}
+/** @param resource $ann */
+function fann_get_cascade_min_cand_epochs(mixed $ann): int {}
+/** @param resource $ann */
+function fann_set_cascade_min_cand_epochs(mixed $ann, int $cascade_min_cand_epochs): bool {}
+
+/** @param resource $ann */
+function fann_get_cascade_num_candidates(mixed $ann): int {}
+/** @param resource $ann */
+function fann_get_cascade_activation_functions_count(mixed $ann): int {}
+/** @param resource $ann @return array */
+function fann_get_cascade_activation_functions(mixed $ann): array {}
+/** @param resource $ann */
+function fann_set_cascade_activation_functions(mixed $ann, array $cascade_activation_functions): bool {}
+
+/** @param resource $ann */
+function fann_get_cascade_activation_steepnesses_count(mixed $ann): int {}
+/** @param resource $ann @return array */
+function fann_get_cascade_activation_steepnesses(mixed $ann): array {}
+/** @param resource $ann */
+function fann_set_cascade_activation_steepnesses(mixed $ann, array $cascade_activation_steepnesses): bool {}
+
+/** @param resource $ann */
+function fann_get_cascade_num_candidate_groups(mixed $ann): int {}
+/** @param resource $ann */
+function fann_set_cascade_num_candidate_groups(mixed $ann, int $cascade_num_candidate_groups): bool {}
+
+/** @param resource $resource */
+function fann_get_errno(mixed $resource): int {}
+/** @param resource $resource */
+function fann_reset_errno(mixed $resource): bool {}
+/** @param resource $resource */
+function fann_reset_errstr(mixed $resource): bool {}
+/** @param resource $resource */
+function fann_get_errstr(mixed $resource): string {}
+/** @param resource $resource */
+function fann_print_error(mixed $resource): void {}
+/** @param resource $resource */
+function fann_set_error_log(mixed $resource, ?string $log_file = null): bool {}
 
 /**
  * Incremental backpropagation; weights update after each sample.
