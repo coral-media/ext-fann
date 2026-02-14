@@ -9,7 +9,5 @@ var_dump(is_resource($ann));
 fann_print_connections($ann);
 var_dump(fann_destroy($ann));
 ?>
---EXPECTF--
-bool(true)
-bool(true)
-%A
+--EXPECTREGEX--
+^bool\(true\)\R[\s\S]*bool\(true\)\R?[\s\S]*$

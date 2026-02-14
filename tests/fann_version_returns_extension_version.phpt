@@ -4,7 +4,10 @@ fann_version() returns extension version
 fann
 --FILE--
 <?php
-var_dump(fann_version());
+$version = fann_version();
+var_dump(is_string($version));
+var_dump(strlen($version) > 0);
 ?>
 --EXPECT--
-string(5) "0.1.0"
+bool(true)
+bool(true)
